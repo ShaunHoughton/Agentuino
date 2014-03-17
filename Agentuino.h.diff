@@ -1,0 +1,22 @@
+500a501,506
+>     char* address;
+>     int16_t trap_type;
+>     int16_t specific_trap;
+>     int32_t time_ticks;
+>     int16_t trap_data_size;
+>     void (*trap_data_adder)(byte*) ;
+507c513,514
+< 	SNMP_API_STAT_CODES begin(char *getCommName, char *setCommName, uint16_t port);
+---
+> 	SNMP_API_STAT_CODES begin(char *getCommName,
+>             char *setCommName, char *trapComName, uint16_t port);
+510a518
+> 	SNMP_API_STAT_CODES sendTrap(SNMP_PDU *pdu, const uint8_t* manager);
+516a525,526
+>     void writeHeaders(SNMP_PDU *pdu, uint16_t size);
+>     SNMP_API_STAT_CODES writePacket(IPAddress address, uint16_t port);
+519a530
+> 	uint16_t _packetTrapPos;
+526a538,539
+> 	char *_trapCommName;
+> 	size_t _trapSize;
